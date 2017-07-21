@@ -3,7 +3,7 @@
 
 	<head>
 
-		<title>@yield("title")</title>
+		<title>@yield("title") | #Working Title#</title>
 
 		<!-- Google Fonts-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,7 +34,7 @@
 
 			<div class="nav-wrapper">
 				<a href="/" class="brand-logo">
-					@yield("title")
+					#Working Title#
 				</a>
 			</div>
 
@@ -90,7 +90,7 @@
 		</nav>
 
 		<main>
-		
+
 
 			
 			@yield("main_content")
@@ -104,12 +104,13 @@
 	        	<div class="row">
 
 	            	<div class="col l6 s12">
-	                	<h5 class="white-text">@yield("title")</h5>
+	                	<h5 class="white-text">#Working Title#</h5>
 	                	<p class="grey-text text-lighten-4">
 	                		Helping you find that edit with that guy at that spot.
 	                		<br><br>
+	                		Any issues? Send us a message <a href="mailto:example@example.com">here</a>!
+	                		<br>
 	                		Made in the Philippines with love and Laravel.
-	                		<br><br>
 	                	</p>
 	              	</div>
 
@@ -163,7 +164,7 @@
 	        </div>
 	        <div class="footer-copyright">
 	        	<div class="container center-align">
-	            	&copy; 2017 @yield("title"). All content is property of their respective owners.
+	            	&copy; 2017 #Working Title#. All content is property of their respective owners.
 	            </div>
 	        </div>
 		</footer>

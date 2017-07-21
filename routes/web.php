@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get("/", function () {
+	$title = "Layout Test";
+    return view("index", compact("title"));
 });

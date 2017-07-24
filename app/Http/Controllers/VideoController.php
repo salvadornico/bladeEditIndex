@@ -10,8 +10,10 @@ use App\Tag;
 class VideoController extends Controller
 {
     function displayHome() {
-		$title = "Layout Test";
-	    return view("index", compact("title"));
+		$title = "Home";
+		$recent_videos = Video::orderBy('created_at', 'desc')->take(4)->get();
+		$tags = Tag::all();
+	    return view("index", compact("title", "recent_videos", "tags"));
 	}
 
 	function test() {

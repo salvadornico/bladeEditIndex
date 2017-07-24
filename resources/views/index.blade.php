@@ -33,10 +33,9 @@
 		<div class="row">
 			<h3>Recently added</h3>
 
-			<div class="col s12 m6 l3">Video</div>
-			<div class="col s12 m6 l3">Video</div>
-			<div class="col s12 m6 l3">Video</div>
-			<div class="col s12 m6 l3">Video</div>
+			@foreach($recent_videos as $video)
+				<div class="col s12 m6 l3">@include("layouts.thumbnail_partial")</div>
+			@endforeach
 		</div>
 
 		<div class="row">

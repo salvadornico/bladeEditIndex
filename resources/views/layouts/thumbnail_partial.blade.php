@@ -1,4 +1,4 @@
-@if($video->platform = "YouTube")
+@if($video->platform == "YouTube")
 
 	<div id="ytData">Data goes here</div>
 
@@ -16,13 +16,13 @@
 				key: varApiKey
 			},
 			function(data){
-				ytData.innerHTML = '<img src="' + data.items[0].snippet.thumbnails.medium.url + '">'
+				ytData.innerHTML = '<img src="' + data.items[0].snippet.thumbnails.medium.url + '" class="responsive-img">'
 			}
 		)
 		
 	</script>
 
-@elseif($video->platform = "Vimeo")
+@elseif($video->platform == "Vimeo")
 
 	<div id="vimeoData">Data goes here</div>
 
@@ -38,10 +38,12 @@
 				url: url,
 			},
 			function(data){
-				vimeoData.innerHTML = '<img src="' + data.thumbnail_url + '">'
+				vimeoData.innerHTML = '<img src="' + data.thumbnail_url + '" class="responsive-img">'
 			}
 		)
 		
 	</script>
 
+@else
+	Video format unsupported :(
 @endif

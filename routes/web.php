@@ -11,7 +11,10 @@
 |
 */
 
-Route::get("/", function () {
-	$title = "Layout Test";
-    return view("index", compact("title"));
-});
+Route::get('/', 'VideoController@displayHome');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/test', 'VideoController@test');

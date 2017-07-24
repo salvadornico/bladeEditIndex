@@ -52,6 +52,7 @@
 			<div class="chip">Tag</div>
 			<div class="chip">Tag</div>
 			<div class="chip">Tag</div>
+			<div class="chip">Tag</div>
 		</div>
 		
 	</div>

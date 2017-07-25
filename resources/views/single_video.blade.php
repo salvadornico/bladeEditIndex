@@ -4,24 +4,22 @@
 
 	<div class="container">
 
+		<h3>{{ $video->title }}</h3>
+
 		<div class="row section">
 
-			<div class="col s12 l9">
+			<div class="col s12 l8">
 
 				@include("layouts.player_partial")
 
-				<p>
-					{{ $video->description }}
-				</p>
+				<p class="description">{{ $video->description }}</p>
 
 			</div>
 
-			<div class="col s12 l3">
+			<div class="col s12 l4">
 				
 				<div class="card grey darken-1">
             		<div class="card-content white-text">
-
-              			<span class="card-title">{{ $video->title }}</span>
 
 	            		<div class="section">
 	              			<span class="highlight">Original owner:</span>

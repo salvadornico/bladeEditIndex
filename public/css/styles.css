@@ -22,3 +22,7 @@ main {
 .highlight {
 	font-weight: bold;
 }
+
+.description {
+	white-space: pre-wrap;
+}

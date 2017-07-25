@@ -16,26 +16,7 @@
 		function onYouTubeIframeAPIReady() {
 			player = new YT.Player('player', {
 				videoId: "{{ $video->url }}",
-				events: {
-					'onReady': onPlayerReady,
-					'onStateChange': onPlayerStateChange
-				}
 			});
-		}
-
-		function onPlayerReady(event) {
-			// event.target.playVideo(); //don't autoplay
-		}
-
-		var done = false;
-		function onPlayerStateChange(event) {
-			if (event.data == YT.PlayerState.PLAYING && !done) {
-				setTimeout(stopVideo, 6000);
-				done = true;
-			}
-		}
-		function stopVideo() {
-			player.stopVideo();
 		}
 
 	</script>
@@ -45,10 +26,9 @@
 		<div id="random_vid"></div>
 
 		<script type="text/javascript">
-			
-			var randomID = "{{ $video->url }}"
+
 			var randomBox = document.getElementById("random_vid")
-			var url = 'https://vimeo.com/' + randomID
+			var url = 'https://vimeo.com/' + "{{ $video->url }}"
 
 			$.get(
 				"http://vimeo.com/api/oembed.json",

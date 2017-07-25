@@ -1,9 +1,5 @@
 @extends("layouts.template")
 
-@section("title")
-	{{ $title }}
-@endsection
-
 @section("main_content")
 
 	<div class="container">

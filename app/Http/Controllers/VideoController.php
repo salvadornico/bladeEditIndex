@@ -11,16 +11,24 @@ class VideoController extends Controller
 {
     function displayHome() {
 		$title = "Home";
-		$random_video = Video::inRandomOrder()->first();
-		$recent_videos = Video::orderBy('created_at', 'desc')->take(4)->get();
+		$video = Video::inRandomOrder()->first();
+		$recent_videos = Video::orderBy('id', 'desc')->take(4)->get();
 		$all_tags = Tag::all();
-	    return view("index", compact("title", "random_video", "recent_videos", "all_tags"));
+	    return view("index", compact("title", "video", "recent_videos", "all_tags"));
 	}
 
 	function displayAllVideos() {
 		$title = "Videos";
-		$all_videos = Video::all();
+		$all_videos = Video::inRandomOrder()->get();
 	    return view("video_list", compact("title", "all_videos"));
+	}
+
+	function displayOneVideo($id) {
+		$video = Video::find($id);
+		$title = $video->title;
+		$tags = $video->tags;
+		$all_tags = Tag::all();
+		return view("single_video", compact("video", "title", "tags", "all_tags"));
 	}
 
 

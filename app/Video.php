@@ -13,4 +13,8 @@ class Video extends Model
     function tags() {
     	return $this->belongsToMany('App\Tag', 'videos_tags', 'video_id', 'tag_id');
     }
+
+    function addTagToVideo(Tag $tag) {
+		$this->tags()->attach($tag->id);
+	}
 }

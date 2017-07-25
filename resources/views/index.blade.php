@@ -1,14 +1,10 @@
 @extends("layouts.template")
 
-@section("title")
-	{{ $title }}
-@endsection
-
 @section("main_content")
 
 	<div class="container">
 		
-		<div class="row">
+		<div class="row section">
 			
 			<div class="col s12 m8">
 				<h1>Yo</h1>
@@ -31,7 +27,7 @@
 
 		</div>
 
-		<div class="row">
+		<div class="row section">
 
 			<h3>Recently added</h3>
 

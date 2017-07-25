@@ -1,6 +1,6 @@
 <div class="video-container">
 
-	@if($random_video->platform == "YouTube")
+	@if($video->platform == "YouTube")
 
 		<div id="player"></div>
 
@@ -15,7 +15,7 @@
 		var player;
 		function onYouTubeIframeAPIReady() {
 			player = new YT.Player('player', {
-				videoId: "{{ $random_video->url }}",
+				videoId: "{{ $video->url }}",
 				events: {
 					'onReady': onPlayerReady,
 					'onStateChange': onPlayerStateChange
@@ -40,13 +40,13 @@
 
 	</script>
 
-	@elseif($random_video->platform == "Vimeo")
+	@elseif($video->platform == "Vimeo")
 
 		<div id="random_vid"></div>
 
 		<script type="text/javascript">
 			
-			var randomID = "{{ $random_video->url }}"
+			var randomID = "{{ $video->url }}"
 			var randomBox = document.getElementById("random_vid")
 			var url = 'https://vimeo.com/' + randomID
 

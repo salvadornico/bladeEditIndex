@@ -3,13 +3,10 @@
 
 	<head>
 
-		<title>@yield("title") | #Working Title#</title>
+		<title>{{ $title }} | #Working Title#</title>
 
 		<!-- Google Fonts-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-		<!-- Font Awesome -->
-		<script src="https://use.fontawesome.com/8a3d0f859b.js"></script>
 
 		<!-- Materialize CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
@@ -64,7 +61,7 @@
         			
 					@if(Auth::user())
 
-	        			<li class="tab waves-effect waves-light"><a href="#" target="_self">Dashboard</a></li>
+	        			<li class="tab waves-effect waves-light"><a href="{{ url("/dashboard") }}" target="_self">Dashboard</a></li>
 
 						<li class="tab waves-effect waves-light">
 							<a href="{{ route('logout') }}"
@@ -79,7 +76,7 @@
 						</li>
 
 						@if(Auth::user()->role == "admin")
-							<li class="tab waves-effect waves-light"><a href="#" target="_self">Admin</a></li>
+							<li class="tab waves-effect waves-light"><a href="{{ url("/admin") }}" target="_self">Admin</a></li>
 						@endif
 
 					@else
@@ -142,7 +139,7 @@
 		        			
 							@if(Auth::user())
 
-			        			<li><a href="#" target="_self" class="grey-text text-lighten-4">Dashboard</a></li>
+			        			<li><a href="{{ url("/dashboard") }}" target="_self" class="grey-text text-lighten-4">Dashboard</a></li>
 
 								<li>
 									<a href="{{ route('logout') }}"
@@ -157,7 +154,7 @@
 								</li>
 
 								@if(Auth::user()->role == "admin")
-									<li><a href="#" target="_self" class="grey-text text-lighten-4">Admin</a></li>
+									<li><a href="{{ url("/admin") }}" target="_self" class="grey-text text-lighten-4">Admin</a></li>
 								@endif
 
 							@else

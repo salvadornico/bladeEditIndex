@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Video extends Model
 {
@@ -15,6 +16,6 @@ class Video extends Model
     }
 
     function addTagToVideo(Tag $tag) {
-		$this->tags()->attach($tag->id);
+		$this->tags()->attach($tag->id, ['user_id' => Auth::user()->id]);
 	}
 }

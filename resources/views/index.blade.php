@@ -45,11 +45,7 @@
 
 			<h3>Search by Tag</h3>
 
-			@foreach($all_tags as $tag)
-				<a href="{{ url("/tag/$tag->id") }}">
-					<div class="chip">{{ $tag->tag }}</div>
-				</a>
-			@endforeach
+			@include("layouts.tags_list_partial")
 
 		</div>
 		

@@ -16,7 +16,7 @@ Route::get('/videos', 'VideoController@displayAllVideos');
 Route::get('/videos/{id}', 'VideoController@displayOneVideo');
 
 Route::group(['middleware' => 'auth'], function() {
-	Route::get('/videos/{id}/addTag', 'TagController@addTag');	
+	Route::post('/videos/{id}/addTag', 'TagController@addTag');	
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {

@@ -75,8 +75,9 @@
 
 							<span class="highlight">Tags:</span>
 							<br>
-			
-							@include("layouts.tags_list_partial")
+							<div id="tagBox">
+								@include("layouts.tags_list_partial")								
+							</div>
 
 						</div>
 
@@ -86,17 +87,18 @@
 								<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 								<div class="input-field inline">
 									<input id="tagInput" name="tagInput" type="text" class="autocomplete" required>
-									<label for="tagInput">Tag this article</label>
+									<label for="tagInput">Tag this video</label>
 								</div>
 							</form>
 
 						</div>
 
 						<button class="btn blue accent-3" id="tagBtn">
-						<i class="material-icons">label</i>
+							<i class="material-icons">label</i>
 						</button>
 
 						<script type="text/javascript">
+						
 							$("#tagBtn").click(function() {
 								var token = $("#_token").val()
 								var tagInput = $("#tagInput").val()
@@ -111,11 +113,13 @@
 									},
 									success: function(data) {
 										$("#tagBox").html(data)
+										$("#tagInput").val("")
 									},
-									error: function(response, data) {
+									error: function(response, status, error) {
 					    				console.log("Error found!")
 					    				console.log(response)
-					    				console.log(data)
+					    				console.log(status)
+					    				console.log(error)
 									},
 								})
 							})
@@ -128,7 +132,7 @@
 											"{{ $tag->tag }}": null,
 										@endforeach
 									},
-									limit: 20,
+									limit: 5,
 									minLength: 1,
 								})
 

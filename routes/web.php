@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'VideoController@displayHome');
+Route::get('/videos', 'VideoController@displayAllVideos');
 
 Auth::routes();
 

@@ -6,8 +6,6 @@
 
 @section("main_content")
 
-	{{-- @include("test_partial", ['test_data' => 'API tests', 'ytVidID' => 'GS1Hr86sK5I', 'vimeoVidID' => '193214598']) --}}
-
 	<div class="container">
 		
 		<div class="row">
@@ -25,33 +23,38 @@
 			</div>
 
 			<div class="col m4 hide-on-small-only">
-				<h4>Random video here</h4>
+
+				<h4>Random video</h4>
+				@include("layouts.player_partial")
+
 			</div>
 
 		</div>
 
 		<div class="row">
+
 			<h3>Recently added</h3>
 
 			@foreach($recent_videos as $video)
-				<div class="col s12 m6 l3">@include("layouts.thumbnail_partial")</div>
+				<a href="{{ url("/videos/$video->id") }}">
+					<div class="col s12 m6 l3">
+						@include("layouts.thumbnail_partial")
+					</div>
+				</a>
 			@endforeach
+
 		</div>
 
 		<div class="row">
-			<h3>Popular Tags</h3>
 
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
-			<div class="chip">Tag</div>
+			<h3>Search by Tag</h3>
+
+			@foreach($all_tags as $tag)
+				<a href="{{ url("/tag/$tag->id") }}">
+					<div class="chip">{{ $tag->tag }}</div>
+				</a>
+			@endforeach
+
 		</div>
 		
 	</div>

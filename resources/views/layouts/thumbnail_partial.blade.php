@@ -1,11 +1,11 @@
 @if($video->platform == "YouTube")
 
-	<div id="ytData">Data goes here</div>
+	<div id="{{ $video->url }}"></div>
 
 	<script type="text/javascript">
 		
 		var ytVidID = "{{ $video->url }}"
-		var ytData = document.getElementById("ytData")
+		var ytData{{ $video->id }} = document.getElementById("{{ $video->url }}")
 		var varApiKey = 'AIzaSyAZxVQVn-TTAtR7jTCnGKP6DkiYIsBzbhQ'
 
 		$.get(
@@ -16,7 +16,7 @@
 				key: varApiKey
 			},
 			function(data){
-				ytData.innerHTML = '<img src="' + data.items[0].snippet.thumbnails.medium.url + '" class="responsive-img">'
+				ytData{{ $video->id }}.innerHTML = '<img src="' + data.items[0].snippet.thumbnails.medium.url + '" class="responsive-img">'
 			}
 		)
 		
@@ -24,12 +24,12 @@
 
 @elseif($video->platform == "Vimeo")
 
-	<div id="vimeoData">Data goes here</div>
+	<div id="{{ $video->url }}"></div>
 
 	<script type="text/javascript">
 		
 		var vimeoVidID = "{{ $video->url }}"
-		var vimeoData = document.getElementById("vimeoData")
+		var vimeoData{{ $video->id }} = document.getElementById("{{ $video->url }}")
 		var url = 'https://vimeo.com/' + vimeoVidID
 
 		$.get(
@@ -38,7 +38,7 @@
 				url: url,
 			},
 			function(data){
-				vimeoData.innerHTML = '<img src="' + data.thumbnail_url + '" class="responsive-img">'
+				vimeoData{{ $video->id }}.innerHTML = '<img src="' + data.thumbnail_url + '" class="responsive-img">'
 			}
 		)
 		

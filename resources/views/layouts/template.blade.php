@@ -51,11 +51,15 @@
 			<div class="nav-content">
 				<ul class="tabs tabs-transparent">
 
+					<script type="text/javascript">
+						var activePage = "{{ $title }}"
+					</script>
+
         			<li class="tab waves-effect waves-light">
-        				<a href="#" target="_self">Home</a>
+        				<a href="{{ url("/") }}" target="_self">Home</a>
         			</li>
         			<li class="tab waves-effect waves-light">
-        				<a href="#" target="_self">Videos</a>
+        				<a href="{{ url("/videos") }}" target="_self">Videos</a>
         			</li>
         			
 					@if(Auth::user())
@@ -130,10 +134,10 @@
 
 		                <ul>
 		                	<li>
-		        				<a href="#" target="_self" class="grey-text text-lighten-4">Home</a>
+		        				<a href="{{ url("/") }}" target="_self" class="grey-text text-lighten-4">Home</a>
 		        			</li>
 		        			<li>
-		        				<a href="#" target="_self" class="grey-text text-lighten-4">Videos</a>
+		        				<a href="{{ url("/videos") }}" target="_self" class="grey-text text-lighten-4">Videos</a>
 		        			</li>
 		        			
 							@if(Auth::user())
@@ -178,6 +182,8 @@
 	            </div>
 	        </div>
 		</footer>
+
+		<script src="{{ asset('js/all.js') }}"></script>
 
 	</body>
 </html>

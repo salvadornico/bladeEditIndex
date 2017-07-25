@@ -83,7 +83,7 @@
 
 						<div class="section">
 							
-							<form method="POST" autocomplete="off">
+							<form method="POST" autocomplete="off" id="ajaxForm">
 								<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 								<div class="input-field inline">
 									<input id="tagInput" name="tagInput" type="text" class="autocomplete" required>
@@ -99,7 +99,24 @@
 
 						<script type="text/javascript">
 						
-							$("#tagBtn").click(function() {
+							// disables form submission by pressing Enter
+							$("#ajaxForm").on("keyup keypress", function(e) {
+  								var keyCode = e.keyCode || e.which
+  								if (keyCode === 13) { 
+    								e.preventDefault()
+    								return false
+  								}
+							})
+
+							// listeners for Ajax
+							$("#tagBtn").click(addTag)
+							$("#tagInput").keypress(function(e) {
+    							if(e.which == 13) {
+    								$("#tagBtn").click()
+    							}
+							})
+
+							function addTag() {
 								var token = $("#_token").val()
 								var tagInput = $("#tagInput").val()
 								var url = window.location.href+'/addTag'
@@ -122,7 +139,7 @@
 					    				console.log(error)
 									},
 								})
-							})
+							}
 
 							$(document).ready(function() {
 

@@ -12,8 +12,11 @@
 */
 
 Route::get('/', 'VideoController@displayHome');
+
 Route::get('/videos', 'VideoController@displayAllVideos');
 Route::get('/videos/{id}', 'VideoController@displayOneVideo');
+
+Route::get('/tags/{id}', 'TagController@displayTag');
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::post('/videos/{id}/addTag', 'TagController@addTag');	

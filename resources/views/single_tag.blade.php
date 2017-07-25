@@ -5,12 +5,12 @@
 	<div class="container">
 		
 		<div class="row">			
-			<h1>Browse Videos</h1>
+			<h3>Videos tagged: {{ $tag->tag }}</h3>
 		</div>
 
 		<div class="row">
 			
-			@foreach($all_videos as $video)
+			@foreach($videos as $video)
 
 				<div class="col s6 m4 l3">
 
@@ -32,21 +32,7 @@
 			@endforeach
 
 		</div>
-
-		<div class="row">
-
-			<h3>Search by Tag</h3>
-
-			@include("layouts.tags_list_partial")
-
-		</div>
 		
-	</div>
-
-	<div class="fixed-action-btn hide-on-large-only">
-		<a class="btn-floating btn-large waves-effect waves-light amber accent-3">
-			<i class="material-icons">add</i>
-		</a>
 	</div>
 
 @endsection

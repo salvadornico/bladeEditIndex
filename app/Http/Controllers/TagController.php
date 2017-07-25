@@ -26,4 +26,12 @@ class TagController extends Controller
 
 		return view("layouts.tags_list_partial", compact("tags"));
 	}
+
+    function displayTag($id) {
+        $tag = Tag::find($id);
+        $title = "Videos tagged: " . $tag->tag;
+        $videos = $tag->videos;
+
+        return view("single_tag", compact("tag", "title", "videos"));
+    }
 }

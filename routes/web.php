@@ -19,7 +19,9 @@ Route::get('/videos/{id}', 'VideoController@displayOneVideo');
 Route::get('/tags/{id}', 'TagController@displayTag');
 
 Route::group(['middleware' => 'auth'], function() {
-	Route::post('/videos/{id}/addTag', 'TagController@addTag');	
+	Route::get('/addVideo', 'VideoController@addVideo');
+	
+	Route::post('/videos/{id}/addTag', 'TagController@addTag');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
@@ -27,3 +29,4 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 }); 
 
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

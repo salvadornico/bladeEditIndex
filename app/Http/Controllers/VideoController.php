@@ -32,6 +32,11 @@ class VideoController extends Controller
 		return view("single_video", compact("video", "title", "tags", "all_tags"));
 	}
 
+	function addVideo() {
+		$title = "Add new video";
+		return view("add_video_form", compact("title"));
+	}
+
 
 	function test() {
 		$ytVidID = "GS1Hr86sK5I";

@@ -92,9 +92,11 @@
 
       			</ul>
 
-      			<a class="btn-floating btn-large halfway-fab waves-effect waves-light amber accent-3 hide-on-med-and-down">
-        			<i class="material-icons">add</i>
-      			</a>
+      			@if(Auth::user())
+	      			<a href="{{ url("/addVideo") }}" class="btn-floating btn-large halfway-fab waves-effect waves-light amber accent-3 hide-on-med-and-down">
+	        			<i class="material-icons">add</i>
+	      			</a>
+	      		@endif
 
     		</div>
 

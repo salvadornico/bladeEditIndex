@@ -26,3 +26,12 @@ main {
 .description {
 	white-space: pre-wrap;
 }
+
+#rawUrlBox .input-field input[type=text]:focus + label {
+	color: #ffd740;
+}
+
+#rawUrlBox .input-field input[type=text]:focus {
+	border-bottom: 1px solid #ffd740;
+	box-shadow: 0 1px 0 0 #ffd740;
+}

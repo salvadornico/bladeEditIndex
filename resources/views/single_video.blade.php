@@ -79,80 +79,82 @@
 
 						</div>
 
-						<div class="section">
+						@if(Auth::user())
+							<div class="section">
+								
+								<form method="POST" autocomplete="off" id="ajaxForm">
+									<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+									<div class="input-field inline">
+										<input id="tagInput" name="tagInput" type="text" class="autocomplete" required>
+										<label for="tagInput">Tag this video</label>
+									</div>
+								</form>
+
+							</div>
+
+							<button class="btn blue accent-3" id="tagBtn">
+								<i class="material-icons">label</i>
+							</button>
+
+							<script type="text/javascript">
 							
-							<form method="POST" autocomplete="off" id="ajaxForm">
-								<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-								<div class="input-field inline">
-									<input id="tagInput" name="tagInput" type="text" class="autocomplete" required>
-									<label for="tagInput">Tag this video</label>
-								</div>
-							</form>
-
-						</div>
-
-						<button class="btn blue accent-3" id="tagBtn">
-							<i class="material-icons">label</i>
-						</button>
-
-						<script type="text/javascript">
-						
-							// disables form submission by pressing Enter
-							$("#ajaxForm").on("keyup keypress", function(e) {
-  								var keyCode = e.keyCode || e.which
-  								if (keyCode === 13) { 
-    								e.preventDefault()
-    								return false
-  								}
-							})
-
-							// listeners for Ajax
-							$("#tagBtn").click(addTag)
-							$("#tagInput").keypress(function(e) {
-    							if(e.which == 13) {
-    								$("#tagBtn").click()
-    							}
-							})
-
-							function addTag() {
-								var token = $("#_token").val()
-								var tagInput = $("#tagInput").val()
-								var url = window.location.href+'/addTag'
-
-								$.ajax({
-									url: url,
-									method: "POST",
-									data: {
-										_token : token,
-										tagInput : tagInput,
-									},
-									success: function(data) {
-										$("#tagBox").html(data)
-										$("#tagInput").val("")
-									},
-									error: function(response, status, error) {
-					    				console.log("Error found!")
-					    				console.log(response)
-					    				console.log(status)
-					    				console.log(error)
-									},
-								})
-							}
-
-							$(document).ready(function() {
-
-								$('input.autocomplete').autocomplete({
-									data: {
-										@foreach($all_tags as $tag)
-											"{{ $tag->tag }}": null,
-										@endforeach
-									},
-									limit: 5,
-									minLength: 1,
+								// disables form submission by pressing Enter
+								$("#ajaxForm").on("keyup keypress", function(e) {
+	  								var keyCode = e.keyCode || e.which
+	  								if (keyCode === 13) { 
+	    								e.preventDefault()
+	    								return false
+	  								}
 								})
 
-							})
-						</script>
+								// listeners for Ajax
+								$("#tagBtn").click(addTag)
+								$("#tagInput").keypress(function(e) {
+	    							if(e.which == 13) {
+	    								$("#tagBtn").click()
+	    							}
+								})
+
+								function addTag() {
+									var token = $("#_token").val()
+									var tagInput = $("#tagInput").val()
+									var url = window.location.href+'/addTag'
+
+									$.ajax({
+										url: url,
+										method: "POST",
+										data: {
+											_token : token,
+											tagInput : tagInput,
+										},
+										success: function(data) {
+											$("#tagBox").html(data)
+											$("#tagInput").val("")
+										},
+										error: function(response, status, error) {
+						    				console.log("Error found!")
+						    				console.log(response)
+						    				console.log(status)
+						    				console.log(error)
+										},
+									})
+								}
+
+								$(document).ready(function() {
+
+									$('input.autocomplete').autocomplete({
+										data: {
+											@foreach($all_tags as $tag)
+												"{{ $tag->tag }}": null,
+											@endforeach
+										},
+										limit: 5,
+										minLength: 1,
+									})
+
+								})
+							</script>
+						@endif
 
             		</div>
           		</div>

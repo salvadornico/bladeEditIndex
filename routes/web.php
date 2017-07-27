@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/deleteVideo', 'VideoController@deleteVideo');
 	
 	Route::post('/videos/{id}/addTag', 'TagController@addTag');
+	Route::post('/deleteTag', 'TagController@deleteTag');
 
 	Route::get('/dashboard', 'VideoController@showDashboard');
 });

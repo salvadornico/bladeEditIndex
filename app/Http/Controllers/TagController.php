@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Video;
 use App\Tag;
+use Session;
 
 class TagController extends Controller
 {
@@ -33,5 +34,14 @@ class TagController extends Controller
         $videos = $tag->videos;
 
         return view("single_tag", compact("tag", "title", "videos"));
+    }
+
+    function deleteTag(Request $request) {
+        $id = $request->tagToDelete;
+        $tag = Tag::find($id);
+        $tag->delete();
+
+        Session::flash("message", "Tag deleted");
+        return redirect("/");
     }
 }

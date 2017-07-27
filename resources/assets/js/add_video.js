@@ -12,8 +12,8 @@ $(document).ready(function() {
 
 })
 
-youtubeRegex = /^(?:https?:\/\/)?(?:www.)?(?:youtu.be\/|youtube.com\/watch\?v=)(.+$)/
-vimeoRegex = /^(?:https?:\/\/)?(?:www.)?(?:vimeo.com\/)(\d+$)/
+youtubeRegex = /^(?:https?:\/\/)?(?:www.)?(?:youtu.be\/|youtube.com\/watch\?v=)(.+)(?:\?|&)?/
+vimeoRegex = /^(?:https?:\/\/)?(?:www.)?(?:vimeo.com\/)(\d+)(?:\?)?/
 
 function parseUrl(url) {
 	var result

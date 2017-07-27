@@ -14,6 +14,7 @@ const { mix } = require('laravel-mix');
 mix.scripts([
     'resources/assets/js/general_scripts.js',
     'resources/assets/js/dashboard.js',
+    'resources/assets/js/tags.js',
     'resources/assets/js/add_video.js'
 ], 'public/js/all.js');
 

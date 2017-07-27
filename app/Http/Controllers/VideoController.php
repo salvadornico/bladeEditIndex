@@ -66,11 +66,4 @@ class VideoController extends Controller
 		$videos = Auth::user()->videos;
 		return view("dashboard", compact("title", "videos"));
 	}
-
-
-	function test() {
-		$ytVidID = "GS1Hr86sK5I";
-		$vimeoVidID = "193214598";
-		return view("layouts.test_partial", compact("ytVidID", "vimeoVidID"));
-	}
 }

@@ -26,6 +26,15 @@ function populateModal(element) {
 	$("#titleForDeletion").text($(title).text())
 	$("#videoToDelete").val(parentID)
 }
+function closeChip(elementID) {
+	tagName = $("#" + elementID).prev().text()
+	tagID = elementID.substring(4)
+
+	$("#tagForDeletionName").text(tagName)
+	$("#tagToDelete").val(tagID)
+
+	$('#deleteTagModal').modal('open')
+}
 $(document).ready(function() {
     		
 	$("#parseUrlBtn").click(function() {
@@ -40,8 +49,8 @@ $(document).ready(function() {
 
 })
 
-youtubeRegex = /^(?:https?:\/\/)?(?:www.)?(?:youtu.be\/|youtube.com\/watch\?v=)(.+$)/
-vimeoRegex = /^(?:https?:\/\/)?(?:www.)?(?:vimeo.com\/)(\d+$)/
+youtubeRegex = /^(?:https?:\/\/)?(?:www.)?(?:youtu.be\/|youtube.com\/watch\?v=)(.+)(?:\?|&)?/
+vimeoRegex = /^(?:https?:\/\/)?(?:www.)?(?:vimeo.com\/)(\d+)(?:\?)?/
 
 function parseUrl(url) {
 	var result

@@ -44,3 +44,11 @@ main {
 #deleteTagForm {
 	display: inline;
 }
+
+#flagBtn {
+	color: #424242;
+}
+
+#flagBtn:hover {
+	color: #bf360c;
+}

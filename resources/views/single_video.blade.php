@@ -71,6 +71,13 @@
 
 						</div> {{-- /section --}}
 
+						<div class="row">
+							<button class="btn-flat" type="submit" id="flagBtn">
+								<i class="material-icons">feedback</i>
+								Flag this video
+							</button>
+						</div>
+
             		</div> {{-- /card-content --}}
           		</div> {{-- /card --}}
 

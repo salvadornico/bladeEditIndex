@@ -31,4 +31,8 @@ class User extends Authenticatable
     function videos() {
         return $this->hasMany('App\Video', 'uploaded_by');
     }
+
+    function flags() {
+        return $this->hasMany('App\Flag', 'user_id');
+    }
 }

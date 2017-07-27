@@ -21,17 +21,23 @@ Route::get('/tags/{id}', 'TagController@displayTag');
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/addVideo', 'VideoController@addVideo');
 	Route::post('/addVideo', 'VideoController@saveVideo');
+	Route::get('/editVideo', 'VideoController@editVideo');
+	Route::post('/editVideo', 'VideoController@saveVideoEdit');
 	Route::post('/deleteVideo', 'VideoController@deleteVideo');
 	
 	Route::post('/videos/{id}/addTag', 'TagController@addTag');
-	Route::post('/deleteTag', 'TagController@deleteTag');
 
 	Route::get('/dashboard', 'VideoController@showDashboard');
 });
 
+Route::group(['middleware' => 'App\Http\Middleware\ModMiddleware'], function() {
+	Route::post('/deleteTag', 'TagController@deleteTag');
+}); 
+
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
 	Route::get('/test', 'VideoController@test');	
-}); 
+	Route::get('/admin', 'VideoController@showAdminPanel');	
+});
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -27,11 +27,19 @@ main {
 	white-space: pre-wrap;
 }
 
-#rawUrlBox .input-field input[type=text]:focus + label {
-	color: #ffd740;
+.input-field input[type=text]:focus + label {
+	color: #ffd740 !important;
 }
 
-#rawUrlBox .input-field input[type=text]:focus {
-	border-bottom: 1px solid #ffd740;
-	box-shadow: 0 1px 0 0 #ffd740;
+.input-field input[type=text]:focus {
+	border-bottom: 1px solid #ffd740 !important;
+	box-shadow: 0 1px 0 0 #ffd740 !important;
+}
+
+.input-field.inline {
+	width: 100%;
+}
+
+#deleteForm {
+	display: inline;
 }

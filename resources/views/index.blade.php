@@ -25,7 +25,7 @@
 
 			</div>
 
-		</div>
+		</div> {{-- /top row --}}
 
 		<div class="row section">
 
@@ -49,10 +49,10 @@
 
 		</div>
 		
-	</div>
+	</div> {{-- /container --}}
 
 	<div class="fixed-action-btn hide-on-large-only">
-		<a class="btn-floating btn-large waves-effect waves-light amber accent-3">
+		<a href="{{ url("/addVideo") }}" class="btn-floating btn-large waves-effect waves-light amber accent-3">
 			<i class="material-icons">add</i>
 		</a>
 	</div>

@@ -20,8 +20,12 @@ Route::get('/tags/{id}', 'TagController@displayTag');
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/addVideo', 'VideoController@addVideo');
+	Route::post('/addVideo', 'VideoController@saveVideo');
+	Route::post('/deleteVideo', 'VideoController@deleteVideo');
 	
 	Route::post('/videos/{id}/addTag', 'TagController@addTag');
+
+	Route::get('/dashboard', 'VideoController@showDashboard');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {

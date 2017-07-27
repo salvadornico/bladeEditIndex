@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
 
 		<!-- Custom CSS -->
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/all.css') }}">
 
 		<!-- jQuery -->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -98,7 +98,7 @@
 	      			</a>
 	      		@endif
 
-    		</div>
+    		</div> {{-- /nav-content --}}
 
 		</nav>
 
@@ -171,18 +171,26 @@
 							@endif
 		                </ul>
 
-	              	</div>
+	              	</div> {{-- /section links --}}
 
-	            </div>
-	        </div>
+	            </div> {{-- /row --}}
+	        </div> {{-- /container --}}
+
 	        <div class="footer-copyright">
 	        	<div class="container center-align">
 	            	&copy; 2017 #Working Title#. All content is property of their respective owners.
 	            </div>
 	        </div>
+
 		</footer>
 
 		<script src="{{ asset('js/all.js') }}"></script>
+		
+		@if(Session::has("message"))
+			<script type="text/javascript">
+				Materialize.toast('{{ Session::get("message") }}', 3000)
+			</script>
+		@endif
 
 	</body>
 </html>

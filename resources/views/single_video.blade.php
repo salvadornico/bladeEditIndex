@@ -12,8 +12,6 @@
 
 				@include("layouts.player_partial")
 
-				<p class="description">{{ $video->description }}</p>
-
 			</div>
 
 			<div class="col s12 l4">
@@ -22,6 +20,7 @@
             		<div class="card-content white-text">
 
 	            		<div class="section">
+
 	              			<span class="highlight">Original owner:</span>
 	              			<br>
 	              			<span id="owner"></span>
@@ -29,7 +28,6 @@
 	              			<span class="highlight">Shared by:</span>
 	              			<br>
 	              			<span>{{ $video->owner()->first()->name }}</span>
-	              			<br><br>
 
 	              			<script type="text/javascript">
 
@@ -69,100 +67,124 @@
 
 								@endif
 
-							</script>
+							</script> {{-- /video info script --}}
 
-							<span class="highlight">Tags:</span>
-							<br>
-							<div id="tagBox">
-								@include("layouts.tags_list_partial")								
-							</div>
+						</div> {{-- /section --}}
 
-						</div>
+            		</div> {{-- /card-content --}}
+          		</div> {{-- /card --}}
 
-						@if(Auth::user())
-							<div class="section">
-								
-								<form method="POST" autocomplete="off" id="ajaxForm">
-									<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-									<div class="input-field inline">
-										<input id="tagInput" name="tagInput" type="text" class="autocomplete" required>
-										<label for="tagInput">Tag this video</label>
-									</div>
-								</form>
+			</div> {{-- /col --}}
+			
+		</div> {{-- /row --}}
 
-							</div>
+		<div class="row section">
 
-							<button class="btn blue accent-3" id="tagBtn">
-								<i class="material-icons">label</i>
-							</button>
+			<div class="col m12 l8">
 
-							<script type="text/javascript">
-							
-								// disables form submission by pressing Enter
-								$("#ajaxForm").on("keyup keypress", function(e) {
-	  								var keyCode = e.keyCode || e.which
-	  								if (keyCode === 13) { 
-	    								e.preventDefault()
-	    								return false
-	  								}
-								})
+				<span class="highlight">Tags:</span>
 
-								// listeners for Ajax
-								$("#tagBtn").click(addTag)
-								$("#tagInput").keypress(function(e) {
-	    							if(e.which == 13) {
-	    								$("#tagBtn").click()
-	    							}
-								})
-
-								function addTag() {
-									var token = $("#_token").val()
-									var tagInput = $("#tagInput").val()
-									var url = window.location.href+'/addTag'
-
-									$.ajax({
-										url: url,
-										method: "POST",
-										data: {
-											_token : token,
-											tagInput : tagInput,
-										},
-										success: function(data) {
-											$("#tagBox").html(data)
-											$("#tagInput").val("")
-										},
-										error: function(response, status, error) {
-						    				console.log("Error found!")
-						    				console.log(response)
-						    				console.log(status)
-						    				console.log(error)
-										},
-									})
-								}
-
-								$(document).ready(function() {
-
-									$('input.autocomplete').autocomplete({
-										data: {
-											@foreach($all_tags as $tag)
-												"{{ $tag->tag }}": null,
-											@endforeach
-										},
-										limit: 5,
-										minLength: 1,
-									})
-
-								})
-							</script>
-						@endif
-
-            		</div>
-          		</div>
+				<div class="row section" id="tagBox">
+					@include("layouts.tags_list_partial")
+				</div>
 
 			</div>
-			
-		</div>	
+
+			<div class="col m12 l4">
+				
+				@if(Auth::user())
+
+					<div class="row section">
+						
+						<form method="POST" autocomplete="off" id="ajaxForm" class="col s9">
+							<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+							<div class="input-field inline">
+								<input id="tagInput" name="tagInput" type="text" class="autocomplete" required>
+								<label for="tagInput">Tag this video</label>
+							</div>
+						</form>
+
+						<div class="col s3">
+							<button class="btn amber darken-1 disabled" id="tagBtn">
+								<i class="material-icons">label</i>
+							</button>							
+						</div>
+
+					</div>
+
+					<script type="text/javascript">
+					
+						// disables form submission by pressing Enter
+						$("#ajaxForm").on("keyup keypress", function(e) {
+								var keyCode = e.keyCode || e.which
+								if (keyCode === 13) { 
+								e.preventDefault()
+								return false
+								}
+						})
+
+						// listeners for Ajax
+						$("#tagBtn").click(addTag)
+						$("#tagInput").keypress(function(e) {
+							if(e.which == 13) {
+								$("#tagBtn").click()
+							}
+
+							if ($("#_token").val()) {
+								$("#tagBtn").removeClass("disabled")
+							}
+						})
+
+						function addTag() {
+							var token = $("#_token").val()
+							var tagInput = $("#tagInput").val()
+							var url = window.location.href+'/addTag'
+
+							$.ajax({
+								url: url,
+								method: "POST",
+								data: {
+									_token : token,
+									tagInput : tagInput,
+								},
+								success: function(data) {
+									$("#tagBox").html(data)
+									$("#tagInput").val("")
+								},
+								error: function(response, status, error) {
+				    				console.log("Error found!")
+				    				console.log(response)
+				    				console.log(status)
+				    				console.log(error)
+								},
+							})
+						}
+
+						$(document).ready(function() {
+
+							$('input.autocomplete').autocomplete({
+								data: {
+									@foreach($all_tags as $tag)
+										"{{ $tag->tag }}": null,
+									@endforeach
+								},
+								limit: 5,
+								minLength: 1,
+							})
+
+						})
+					</script>
+
+				@endif
+
+			</div>
+
+		</div> {{-- /row --}}
+
+		<div class="row section">							
+			<p class="description">{{ $video->description }}</p>
+		</div>
 	  				
-	</div>
+	</div> {{-- /container --}}
 
 @endsection

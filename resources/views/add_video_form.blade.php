@@ -8,50 +8,49 @@
 
 		<div class="row" id="rawUrlBox">
 			<div class="input-field col s11">
-          		<input id="rawUrl" type="text" class="validate">
+          		<input id="rawUrl" type="text">
           		<label for="rawUrl">Paste in your YouTube or Vimeo link</label>
         	</div>
         	<div class="col s1">
-        		<button class="btn-large waves-effect waves-light amber accent-2" id="parseUrlBtn">
-		        	<i class="material-icons">search</i>       			
+        		<button class="btn-large waves-effect waves-light amber darken-1" id="parseUrlBtn">
+		        	<i class="material-icons">search</i>      			
         		</button>
         	</div>
 		</div>
 
-		<div class="row" id="resultBox">
+		<div class="row scale-transition scale-out" id="resultBox">
+
+			<div class="row" id="resultMessage"></div>
+
+			<form method="POST" id="addVideoForm" class="scale-transition scale-out">
+
+				<div class="row">
+        			<div class="input-field col s12">
+          				<input id="title" name="title" type="text" class="validate" required>
+          				<label for="title">Video Title</label>
+        			</div>
+      			</div>
+
+      			<div class="row">
+        			<div class="input-field col s12">
+          				<textarea id="description" name="description" class="materialize-textarea" required></textarea>
+          				<label for="description">Description</label>
+        			</div>
+      			</div>
+
+      			<input type="hidden" id="platform" name="platform"></input>
+      			<input type="hidden" id="url" name="url"></input>
+				<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+
+      			<button class="btn waves-effect waves-light amber darken-1" type="submit" name="submit">
+      				Submit
+    				<i class="material-icons right">send</i>
+  				</button>
+				
+			</form>
 
 		</div>
 
 	</div>
-
-	<script type="text/javascript">		
-		$(document).ready(function() {
-    		
-			$("#parseUrlBtn").click(function() {
-				var rawUrl = $("#rawUrl").val()
-				$("#resultBox").html(parseUrl(rawUrl))
-			})
-			$("#rawUrl").keypress(function(e) {
-				if(e.which == 13) {
-					$("#parseUrlBtn").click()
-				}
-			})
-
-  		})
-
-		youtubeRegex = /^(?:https?:\/\/)?(?:www.)?(?:youtu.be\/|youtube.com\/watch\?v=)(.+$)/
-		vimeoRegex = /^(?:https?:\/\/)?(?:www.)?(?:vimeo.com\/)(\d+$)/
-
-		function parseUrl(url) {
-			if (youtubeRegex.test(url)) {
-				var result = youtubeRegex.exec(url)
-			} else if (vimeoRegex.test(url)) {
-				var result = vimeoRegex.exec(url)				
-			} else {
-				return "Invalid URL. Please double-check and try again."
-			}
-			return result[1]
-		}
-	</script>
 
 @endsection

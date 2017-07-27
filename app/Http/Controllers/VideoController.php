@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 use App\Video;
 use App\Tag;
 
@@ -35,6 +36,35 @@ class VideoController extends Controller
 	function addVideo() {
 		$title = "Add new video";
 		return view("add_video_form", compact("title"));
+	}
+
+	function saveVideo(Request $request) {
+		$new_video = new Video();
+
+		$new_video->title = $request->title;
+		$new_video->description = $request->description;
+		$new_video->platform = $request->platform;
+		$new_video->url = $request->url;
+		$new_video->uploaded_by = Auth::user()->id;
+		$new_video->save();
+
+		Session::flash("message", "Video added");
+		return redirect("/videos");
+	}
+
+	function deleteVideo(Request $request) {
+		$id = $request->videoToDelete;
+		$video = Video::find($id);
+		$video->delete();
+
+		Session::flash("message", "Video deleted");
+		return back();
+	}
+
+	function showDashboard() {
+		$title = "Dashboard";
+		$videos = Auth::user()->videos;
+		return view("dashboard", compact("title", "videos"));
 	}
 
 

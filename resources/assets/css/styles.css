@@ -27,12 +27,12 @@ main {
 	white-space: pre-wrap;
 }
 
-.input-field input[type=text]:focus + label,
+.input-field input:focus + label,
 .input-field textarea:focus + label {
 	color: #ffd740 !important;
 }
 
-.input-field input[type=text]:focus,
+.input-field input:focus,
 .input-field textarea:focus {
 	border-bottom: 1px solid #ffd740 !important;
 	box-shadow: 0 1px 0 0 #ffd740 !important;
@@ -73,4 +73,13 @@ main {
 
 .chip a {
 	color: #424242;
+}
+
+#remember:checked + label:before {
+	border-right: 2px solid #ffd740;
+	border-bottom: 2px solid #ffd740;
+}
+
+#forgot-link:hover {
+	color: #ffd740 !important;
 }

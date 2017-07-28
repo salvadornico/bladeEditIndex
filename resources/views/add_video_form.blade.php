@@ -7,11 +7,11 @@
 		<h2>Add a new video</h2>
 
 		<div class="row" id="rawUrlBox">
-			<div class="input-field col s11">
+			<div class="input-field col s12 m10 l11">
 					<input id="rawUrl" type="text">
 					<label for="rawUrl">Paste in your YouTube or Vimeo link</label>
 			</div>
-			<div class="col s1">
+			<div class="col s12 m1">
 				<button class="btn-large waves-effect waves-light amber darken-1" id="parseUrlBtn">
 					<i class="material-icons">search</i>      			
 				</button>
@@ -20,7 +20,7 @@
 
 		<div class="row scale-transition scale-out" id="resultBox">
 
-			<div class="row" id="resultMessage">
+			<div class="row section" id="resultMessage">
 
 				<div class="preloader-wrapper active">
     				<div class="spinner-layer spinner-red-only">

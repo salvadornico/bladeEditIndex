@@ -14,6 +14,10 @@ $(document).ready(function() {
 
 	$('.modal').modal()
 })
+
+$('input').focus(function() {
+	Materialize.updateTextFields()
+})
 function populateModal(element) {
 	parentID = $(element).parent().attr("id")
 

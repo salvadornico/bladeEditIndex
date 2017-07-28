@@ -54,21 +54,31 @@
 					</script>
 
         			<li class="tab waves-effect waves-light">
-        				<a href="{{ url("/") }}" target="_self">Home</a>
+        				<a href="{{ url("/") }}" target="_self">
+        					<span class="hide-on-small-only">Home</span>
+        					<i class="material-icons show-on-small">home</i>
+        				</a>
         			</li>
         			<li class="tab waves-effect waves-light">
-        				<a href="{{ url("/videos") }}" target="_self">Videos</a>
+        				<a href="{{ url("/videos") }}" target="_self">
+        					<span class="hide-on-small-only">Videos</span>
+        					<i class="material-icons show-on-small">video_library</i>
+        				</a>
         			</li>
         			
 					@if(Auth::user())
 
-	        			<li class="tab waves-effect waves-light"><a href="{{ url("/dashboard") }}" target="_self">Dashboard</a></li>
+	        			<li class="tab waves-effect waves-light"><a href="{{ url("/dashboard") }}" target="_self">
+	        				<span class="hide-on-small-only">Dashboard</span>
+	        				<i class="material-icons show-on-small">dashboard</i>
+	        			</a></li>
 
 						<li class="tab waves-effect waves-light">
 							<a href="{{ route('logout') }}"
 								onclick="event.preventDefault();
 							 		document.getElementById('logout-form').submit();" target="_self">
-								Logout
+								<span class="hide-on-small-only">Logout</span>
+								<i class="material-icons show-on-small">exit_to_app</i>
 							</a>
 
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -77,16 +87,25 @@
 						</li>
 
 						@if(Auth::user()->role == "admin")
-							<li class="tab waves-effect waves-light"><a href="{{ url("/admin") }}" target="_self">Admin</a></li>
+							<li class="tab waves-effect waves-light"><a href="{{ url("/admin") }}" target="_self">
+								<span class="hide-on-small-only">Admin</span>
+								<i class="material-icons show-on-small">supervisor_account</i>
+							</a></li>
 						@endif
 
 					@else
 
 						<li class="tab waves-effect waves-light">
-							<a href="{{ url("/login")}}" target="_self">Login</a>
+							<a href="{{ url("/login")}}" target="_self">
+								<span class="hide-on-small-only">Login</span>
+								<i class="material-icons show-on-small">assignment_ind</i>
+							</a>
 						</li>
 						<li class="tab waves-effect waves-light">
-							<a href="{{ url("/register")}}" target="_self">Register</a>
+							<a href="{{ url("/register")}}" target="_self">
+								<span class="hide-on-small-only">Register</span>
+								<i class="material-icons show-on-small">person_add</i>
+							</a>
 						</li>
 
 					@endif

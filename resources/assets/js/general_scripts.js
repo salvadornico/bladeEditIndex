@@ -14,3 +14,7 @@ $(document).ready(function() {
 
 	$('.modal').modal()
 })
+
+$('input').focus(function() {
+	Materialize.updateTextFields()
+})

@@ -4,7 +4,7 @@
 
 	<div class="container">
 
-		<h3>Search results for: {{ $query }}</h3>
+		<h3>Search results for: "{{ $query }}"</h3>
 
 		<div class="row section">
 
@@ -49,6 +49,8 @@
 			@endif
 
 		</div>
+
+		<img src="{{ asset("images/search-by-algolia-white.png") }}" alt="Algolia search logo" width="150px" class="right">
 
 	</div>
 

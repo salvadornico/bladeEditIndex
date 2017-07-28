@@ -11,17 +11,16 @@
 |
 */
 
-Route::get('/', 'HomeController@displayHome');
+Route::get('/', 'VideoController@displayHome');
+Route::post('/search', 'VideoController@search');
 
 Route::get('/videos', 'VideoController@displayAllVideos');
 Route::get('/videos/{id}', 'VideoController@displayOneVideo');
 
 Route::get('/tags/{id}', 'TagController@displayTag');
 
-Route::post('/search', 'HomeController@search');
-
 Route::group(['middleware' => 'auth'], function() {
-	Route::get('/dashboard', 'HomeController@showDashboard');
+	Route::get('/dashboard', 'VideoController@showDashboard');
 
 	Route::get('/addVideo', 'VideoController@addVideo');
 	Route::post('/addVideo', 'VideoController@saveVideo');

@@ -91,12 +91,14 @@
 
 						</div> {{-- /section --}}
 
-						<div class="row">
-							<button class="btn-flat modal-trigger" id="flagBtn" data-target="flagModal">
-								<i class="material-icons">feedback</i>
-								Flag this video
-							</button>
-						</div>
+						@if(Auth::user())
+							<div class="row">
+								<button class="btn-flat modal-trigger" id="flagBtn" data-target="flagModal">
+									<i class="material-icons">feedback</i>
+									Flag this video
+								</button>
+							</div>
+						@endif
 
             		</div> {{-- /card-content --}}
           		</div> {{-- /card --}}

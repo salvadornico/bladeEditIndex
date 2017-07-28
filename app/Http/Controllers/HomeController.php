@@ -30,30 +30,6 @@ class HomeController extends Controller
         return redirect('/');
     }
 
-    function displayHome() {
-        $title = "Home";
-        $video = Video::inRandomOrder()->first();
-        $recent_videos = Video::orderBy('id', 'desc')->take(4)->get();
-        $tags = Tag::inRandomOrder()->get();
-        return view("index", compact("title", "video", "recent_videos", "tags"));
-    }
-
-    function showDashboard() {
-        $title = "Dashboard";
-        $videos = Auth::user()->videos;
-        $flags = Flag::where("status", "pending")->get();
-        return view("dashboard", compact("title", "videos", "flags"));
-    }
-
-    function search(Request $request) {
-        $query = $request->search;
-        $title = "Results for '$query'";
-        $videos = Video::search($query)->get();
-        $tags = Tag::search($query)->get();
-
-        return view("search_results", compact("query", "title", "videos", "tags"));
-    }
-
     function test() {
         $search = Video::search('chihiro')->raw();
         dd($search);

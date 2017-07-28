@@ -36,7 +36,6 @@
 				</a>
 
 				<form method="POST" action='{{ url("/search") }}' class="right hide-on-med-and-down">
-					{{ csrf_field() }}
 					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         			<div class="input-field">
           				<input id="search" type="search" name="search" required>

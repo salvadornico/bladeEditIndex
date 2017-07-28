@@ -7,20 +7,13 @@ use Auth;
 use Session;
 use App\Video;
 use App\Tag;
+use App\Flag;
 
 class VideoController extends Controller
 {
-    function displayHome() {
-		$title = "Home";
-		$video = Video::inRandomOrder()->first();
-		$recent_videos = Video::orderBy('id', 'desc')->take(4)->get();
-		$tags = Tag::inRandomOrder()->get();
-	    return view("index", compact("title", "video", "recent_videos", "tags"));
-	}
-
-	function displayAllVideos() {
+    function displayAllVideos() {
 		$title = "Videos";
-		$all_videos = Video::inRandomOrder()->get();
+		$all_videos = Video::inRandomOrder()->simplePaginate(12);
 		$tags = Tag::inRandomOrder()->get();
 	    return view("video_list", compact("title", "all_videos", "tags"));
 	}
@@ -52,6 +45,23 @@ class VideoController extends Controller
 		return redirect("/videos");
 	}
 
+	function editVideo($id) {
+		$title = "Edit video";
+		$video = Video::find($id);
+		return view("edit_video", compact("title", "video"));
+	}
+
+	function saveVideoEdit($id, Request $request) {
+		$video = Video::find($id);
+		$video->update([
+			"title" => $request->title,
+			"description" => $request->description,
+		]);
+		$video->save();
+		Session::flash("message", "Changes saved");
+		return redirect("/videos/".$id);
+	}
+
 	function deleteVideo(Request $request) {
 		$id = $request->videoToDelete;
 		$video = Video::find($id);
@@ -59,11 +69,5 @@ class VideoController extends Controller
 
 		Session::flash("message", "Video deleted");
 		return back();
-	}
-
-	function showDashboard() {
-		$title = "Dashboard";
-		$videos = Auth::user()->videos;
-		return view("dashboard", compact("title", "videos"));
 	}
 }

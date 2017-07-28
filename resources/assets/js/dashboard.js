@@ -1,9 +1,3 @@
-$(document).ready(function() {
-
-	$('.modal').modal()
-
-})
-
 function populateModal(element) {
 	parentID = $(element).parent().attr("id")
 

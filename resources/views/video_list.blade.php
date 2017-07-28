@@ -33,6 +33,8 @@
 
 		</div> {{-- /row --}}
 
+		{{ $all_videos->links() }}
+
 		<div class="row">
 
 			<h3>Search by Tag</h3>

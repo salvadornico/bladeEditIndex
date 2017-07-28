@@ -35,11 +35,13 @@
 					#Working Title#
 				</a>
 
-				<form class="right hide-on-med-and-down">
+				<form method="POST" action='{{ url("/search") }}' class="right hide-on-med-and-down">
+					{{ csrf_field() }}
+					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         			<div class="input-field">
-          			<input id="search" type="search" required>
-          			<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          			<i class="material-icons">close</i>
+          				<input id="search" type="search" name="search" required>
+          				<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          				<i class="material-icons">close</i>
         			</div>
       			</form>
 
@@ -104,10 +106,8 @@
 
 		<main>
 
-
 			
 			@yield("main_content")
-
 
 
 		</main>

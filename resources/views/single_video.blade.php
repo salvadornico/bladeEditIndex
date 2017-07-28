@@ -4,6 +4,26 @@
 
 	<div class="container">
 
+		@if($video->hasPendingFlags())
+			<div class="row">
+
+        		<div class="col s12">
+          			<div class="card orange lighten-3">
+            			<div class="card-content black-text">
+              				<span class="card-title">This video has been flagged</span>
+              				<p>
+              					Please go to the dashboard to review.
+              				</p>
+            			</div>
+            			<div class="card-action">
+              				<a href="{{ url("/dashboard") }}" class="blue-text">Dashboard</a>
+            			</div>
+          			</div>
+        		</div>
+
+			</div>
+		@endif
+
 		<h3>{{ $video->title }}</h3>
 
 		<div class="row section">
@@ -72,7 +92,7 @@
 						</div> {{-- /section --}}
 
 						<div class="row">
-							<button class="btn-flat" type="submit" id="flagBtn">
+							<button class="btn-flat modal-trigger" id="flagBtn" data-target="flagModal">
 								<i class="material-icons">feedback</i>
 								Flag this video
 							</button>
@@ -120,27 +140,43 @@
 					</div>
 
 					<script type="text/javascript">
-					
-						// disables form submission by pressing Enter
-						$("#ajaxForm").on("keyup keypress", function(e) {
-								var keyCode = e.keyCode || e.which
-								if (keyCode === 13) { 
-								e.preventDefault()
-								return false
+
+						$(document).ready(function() {
+
+							$('input.autocomplete').autocomplete({
+								data: {
+									@foreach($all_tags as $tag)
+										"{{ $tag->tag }}": null,
+									@endforeach
+								},
+								limit: 5,
+								minLength: 1,
+							})
+
+							// disables form submission by pressing Enter
+							$("#ajaxForm").on("keyup keypress", function(e) {
+									var keyCode = e.keyCode || e.which
+									if (keyCode === 13) { 
+									e.preventDefault()
+									return false
+									}
+							})
+
+							// listeners for Ajax
+							$("#tagBtn").click(addTag)
+							$("#tagInput").keypress(function(e) {
+								if(e.which == 13) {
+									$("#tagBtn").click()
 								}
-						})
 
-						// listeners for Ajax
-						$("#tagBtn").click(addTag)
-						$("#tagInput").keypress(function(e) {
-							if(e.which == 13) {
-								$("#tagBtn").click()
-							}
+								if ($("#_token").val()) {
+									$("#tagBtn").removeClass("disabled")
+								}
+							})
 
-							if ($("#_token").val()) {
-								$("#tagBtn").removeClass("disabled")
-							}
-						})
+							$('.modal').modal()
+							
+						})					
 
 						function addTag() {
 							var token = $("#_token").val()
@@ -167,19 +203,6 @@
 							})
 						}
 
-						$(document).ready(function() {
-
-							$('input.autocomplete').autocomplete({
-								data: {
-									@foreach($all_tags as $tag)
-										"{{ $tag->tag }}": null,
-									@endforeach
-								},
-								limit: 5,
-								minLength: 1,
-							})
-
-						})
 					</script>
 
 				@endif
@@ -193,5 +216,25 @@
 		</div>
 	  				
 	</div> {{-- /container --}}
+
+	<div id="flagModal" class="modal">
+    	<div class="modal-content black-text">
+
+      		<h4>Flag this video</h4>
+      		<form method="POST" action='{{ url("/addFlag") }}'>
+      			{{ csrf_field() }}
+      			<input type="hidden" name="video_id" value="{{ $video->id }}"></input>
+      			<div class="input-field col s12">
+					<textarea id="message" name="message" class="materialize-textarea" required></textarea>
+					<label for="message">Why are you flagging this video?</label>
+				</div>
+				<button type="submit" class="btn amber accent-3">Submit</button>
+      		</form>
+
+    	</div>
+	    <div class="modal-footer">
+	      	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+	    </div>
+  	</div>
 
 @endsection

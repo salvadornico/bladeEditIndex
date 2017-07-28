@@ -56,7 +56,7 @@
 
 						<input type="hidden" id="platform" name="platform"></input>
 						<input type="hidden" id="url" name="url"></input>
-				<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
 						<button class="btn waves-effect waves-light amber darken-1" type="submit" name="submit">
 							Submit

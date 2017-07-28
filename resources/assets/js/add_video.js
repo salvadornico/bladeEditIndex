@@ -49,6 +49,7 @@ function processYoutube(vidID) {
 			$("#platform").val("YouTube")
 			$("#url").val(vidID)
 			Materialize.updateTextFields()
+			$('#description').trigger('autoresize')
 			$("#addVideoForm").addClass("scale-in")
 		},
 		error: function(response, status, error) {
@@ -79,6 +80,7 @@ function processVimeo(vidID) {
 			$("#platform").val("Vimeo")
 			$("#url").val(vidID)
 			Materialize.updateTextFields()
+			$('#description').trigger('autoresize')
 			$("#addVideoForm").addClass("scale-in")
 		},
 		error: function(response, status, error) {

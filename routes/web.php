@@ -11,32 +11,39 @@
 |
 */
 
-Route::get('/', 'VideoController@displayHome');
+Route::get('/', 'HomeController@displayHome');
 
 Route::get('/videos', 'VideoController@displayAllVideos');
 Route::get('/videos/{id}', 'VideoController@displayOneVideo');
 
 Route::get('/tags/{id}', 'TagController@displayTag');
 
+Route::post('/search', 'HomeController@search');
+
 Route::group(['middleware' => 'auth'], function() {
+	Route::get('/dashboard', 'HomeController@showDashboard');
+
 	Route::get('/addVideo', 'VideoController@addVideo');
 	Route::post('/addVideo', 'VideoController@saveVideo');
-	Route::get('/editVideo', 'VideoController@editVideo');
-	Route::post('/editVideo', 'VideoController@saveVideoEdit');
+	Route::get('/videos/{id}/edit', 'VideoController@editVideo');
+	Route::post('/videos/{id}/edit', 'VideoController@saveVideoEdit');
 	Route::post('/deleteVideo', 'VideoController@deleteVideo');
 	
 	Route::post('/videos/{id}/addTag', 'TagController@addTag');
 
-	Route::get('/dashboard', 'VideoController@showDashboard');
+	Route::post('/addFlag', 'FlagController@addFlag');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\ModMiddleware'], function() {
 	Route::post('/deleteTag', 'TagController@deleteTag');
+
+	Route::post('/markFlagRead', 'FlagController@markFlagRead');
+	Route::post('/markFlagDismissed', 'FlagController@markFlagDismissed');
 }); 
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
-	Route::get('/test', 'VideoController@test');	
-	Route::get('/admin', 'VideoController@showAdminPanel');	
+	Route::get('/test', 'HomeController@test');	
+	Route::get('/admin', 'HomeController@showAdminPanel');	
 });
 
 Auth::routes();

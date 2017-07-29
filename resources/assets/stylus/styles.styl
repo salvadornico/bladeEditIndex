@@ -1,0 +1,52 @@
+@import "base"
+
+accentYellow = #ffd740
+textGrey = #424242
+warningRed = #bf360c
+
+.nav-wrapper
+	padding-left: 2%
+	padding-right: 2%
+
+.highlight
+	font-weight: bold
+
+.description
+	white-space: pre-wrap
+
+.input-field
+	&.inline
+		width: 100%
+	input:focus, textarea:focus
+		border-bottom: 1px solid accentYellow !important
+		box-shadow: 0 1px 0 0 accentYellow !important
+		& + label
+			color: accentYellow !important
+
+#deleteForm, #deleteTagForm
+	display: inline
+
+#flagBtn
+	color: textGrey
+	&:hover
+		color: warningRed
+
+.flag-action
+	display: inline
+
+.pagination
+	text-align: center
+	.disabled
+		display: none
+	li a
+		color: white
+
+.chip a
+	color: textGrey
+
+#remember:checked + label:before
+	border-right: 2px solid accentYellow
+	border-bottom: 2px solid accentYellow
+
+#forgot-link:hover
+	color: accentYellow !important

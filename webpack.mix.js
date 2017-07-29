@@ -18,8 +18,6 @@ mix.scripts([
     'resources/assets/js/add_video.js'
 ], 'public/js/all.js');
 
-mix.styles([
-    'resources/assets/css/styles.css'
-], 'public/css/all.css');
+mix.stylus('resources/assets/stylus/styles.styl', 'public/css/all.css');
 
 mix.browserSync('http://localhost:8000');

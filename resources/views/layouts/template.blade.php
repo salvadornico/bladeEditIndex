@@ -3,10 +3,11 @@
 
 	<head>
 
-		<title>{{ $title }} | #Working Title#</title>
+		<title>{{ $title }} | What's That Edit?</title>
 
 		<!-- Google Fonts-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Muli:800i" rel="stylesheet">
 
 		<!-- Materialize CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
@@ -32,7 +33,7 @@
 			<div class="nav-wrapper">
 
 				<a href="/" class="brand-logo">
-					#Working Title#
+					What's That Edit?
 				</a>
 
 				<form method="POST" action='{{ url("/search") }}' class="right hide-on-med-and-down">
@@ -135,7 +136,7 @@
 	        	<div class="row">
 
 	            	<div class="col l6 s12">
-	                	<h5 class="white-text">#Working Title#</h5>
+	                	<h5 class="white-text">What's That Edit?</h5>
 	                	<p class="grey-text text-lighten-4">
 	                		Helping you find that edit with that guy at that spot.
 	                		<br><br>
@@ -196,7 +197,7 @@
 
 	        <div class="footer-copyright">
 	        	<div class="container center-align">
-	            	&copy; 2017 #Working Title#. All content is property of their respective owners.
+	            	{{--  &copy; 2017 What's That Edit. All content is property of their respective owners.  --}}
 	            </div>
 	        </div>
 

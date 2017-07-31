@@ -4,7 +4,7 @@
 
 	<div class="container">
 
-		@if($video->hasPendingFlags())
+		@if($video->hasPendingFlags() && Auth::user() && (Auth::user()->role == "admin" || Auth::user()->role == "moderator"))
 			<div class="row">
 
         		<div class="col s12">

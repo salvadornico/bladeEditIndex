@@ -1,1 +1,131 @@
-function populateModal(e){parentID=$(e).parent().attr("id");var t="#title-"+parentID;$("#titleForDeletion").text($(t).text()),$("#videoToDelete").val(parentID)}function closeChip(e){tagName=$("#"+e).prev().text(),tagID=e.substring(4),$("#tagForDeletionName").text(tagName),$("#tagToDelete").val(tagID),$("#deleteTagModal").modal("open")}function parseUrl(e){var t;$("#resultBox").addClass("scale-in"),youtubeRegex.test(e)?(t=youtubeRegex.exec(e),processYoutube(t[1])):vimeoRegex.test(e)?(t=vimeoRegex.exec(e),processVimeo(t[1])):$("#resultMessage").html("Invalid URL. Please double-check and try again.")}function processYoutube(e){$.ajax({url:"https://www.googleapis.com/youtube/v3/videos",method:"GET",data:{part:"snippet",id:e,key:"AIzaSyAZxVQVn-TTAtR7jTCnGKP6DkiYIsBzbhQ"},success:function(t){$("#resultMessage").html('Is this the correct video?<br><img src="'+t.items[0].snippet.thumbnails.medium.url+'">'),$("#title").val(t.items[0].snippet.title),$("#description").val(t.items[0].snippet.description),$("#platform").val("YouTube"),$("#url").val(e),Materialize.updateTextFields(),$("#description").trigger("autoresize"),$("#addVideoForm").addClass("scale-in")},error:function(e,t,a){$("#resultMessage").html("No video found. Please double check your link.")}})}function processVimeo(e){var t="https://vimeo.com/"+e;$.ajax({url:"http://vimeo.com/api/oembed.json",method:"GET",data:{url:t},success:function(t){$("#resultMessage").html('Is this the correct video?<br><img src="'+t.thumbnail_url+'">'),$("#title").val(t.title),$("#description").val(t.description),$("#platform").val("Vimeo"),$("#url").val(e),Materialize.updateTextFields(),$("#description").trigger("autoresize"),$("#addVideoForm").addClass("scale-in")},error:function(e,t,a){$("#resultMessage").html("No video found. Please double check your link.")}})}$(document).ready(function(){$("ul.tabs").tabs(),tabs=$("li.tab"),tabLinks=$("li.tab > a");for(var e=0;e<tabLinks.length;e++)tabLinks[e].textContent.trim()==activePage?(tabLinks[e].className="active",tabs[e].className+=" active"):tabLinks[e].className="";$(".modal").modal()}),$("input").focus(function(){Materialize.updateTextFields()}),$(document).ready(function(){$("#parseUrlBtn").click(function(){parseUrl($("#rawUrl").val())}),$("#rawUrl").keypress(function(e){13==e.which&&$("#parseUrlBtn").click()})}),youtubeRegex=/^(?:https?:\/\/)?(?:www.)?(?:youtu.be\/|youtube.com\/watch\?v=)(.+)(?:\?|&)?/,vimeoRegex=/^(?:https?:\/\/)?(?:www.)?(?:vimeo.com\/)(\d+)(?:\?)?/;
+$(document).ready(function() {
+	$('ul.tabs').tabs()
+	tabs = $('li.tab')
+	tabLinks = $('li.tab > a')
+
+	for (var i = 0; i < tabLinks.length; i++) {
+		if (tabLinks[i].textContent.trim() == activePage) {
+			tabLinks[i].className = "active"
+			tabs[i].className += " active"
+		} else {
+			tabLinks[i].className = ""
+		}
+	}
+
+	$('.modal').modal()
+})
+
+$('input').focus(function() {
+	Materialize.updateTextFields()
+})
+function populateModal(element) {
+	parentID = $(element).parent().attr("id")
+
+	var title = "#title-" + parentID
+
+	$("#titleForDeletion").text($(title).text())
+	$("#videoToDelete").val(parentID)
+}
+function closeChip(elementID) {
+	tagName = $("#" + elementID).prev().text()
+	tagID = elementID.substring(4)
+
+	$("#tagForDeletionName").text(tagName)
+	$("#tagToDelete").val(tagID)
+
+	$('#deleteTagModal').modal('open')
+}
+$(document).ready(function() {
+    		
+	$("#parseUrlBtn").click(function() {
+		var rawUrl = $("#rawUrl").val()
+		parseUrl(rawUrl)
+	})
+	$("#rawUrl").keypress(function(e) {
+		if(e.which == 13) {
+			$("#parseUrlBtn").click()
+		}
+	})
+
+})
+
+youtubeRegex = /^(?:https?:\/\/)?(?:www.)?(?:youtu.be\/|youtube.com\/watch\?v=)(.+)(?:\?|&)?/
+vimeoRegex = /^(?:https?:\/\/)?(?:www.)?(?:vimeo.com\/)(\d+)(?:\?)?/
+
+function parseUrl(url) {
+	var result
+	$("#resultBox").addClass("scale-in")
+	if (youtubeRegex.test(url)) {
+		result = youtubeRegex.exec(url)
+		processYoutube(result[1])
+	} else if (vimeoRegex.test(url)) {
+		result = vimeoRegex.exec(url)
+		processVimeo(result[1])			
+	} else {
+		$("#resultMessage").html("Invalid URL. Please double-check and try again.")
+	}
+}
+
+function processYoutube(vidID) {
+	var apiKey = 'AIzaSyAZxVQVn-TTAtR7jTCnGKP6DkiYIsBzbhQ'
+
+	$.ajax({
+		url: "https://www.googleapis.com/youtube/v3/videos",
+		method: "GET",
+		data: {
+			part: 'snippet', 
+			id: vidID,
+			key: apiKey,
+		},
+		success: function(data){
+			$("#resultMessage").html('Is this the correct video?<br><img src="' + 
+				data.items[0].snippet.thumbnails.medium.url + '">')
+
+			$("#title").val(data.items[0].snippet.title)
+			$("#description").val(data.items[0].snippet.description)
+			$("#platform").val("YouTube")
+			$("#url").val(vidID)
+			Materialize.updateTextFields()
+			$('#description').trigger('autoresize')
+			$("#addVideoForm").addClass("scale-in")
+		},
+		error: function(response, status, error) {
+			console.log("Error found!")
+			console.log(response)
+			console.log(status)
+			console.log(error)
+			$("#resultMessage").html("No video found. Please double check your link.")
+		},
+	})
+}
+
+function processVimeo(vidID) {
+	var url = 'https://vimeo.com/' + vidID
+
+	$.ajax({
+		url: "http://vimeo.com/api/oembed.json",
+		method: "GET",
+		data: {
+			url: url,
+		},
+		success: function(data){
+			$("#resultMessage").html('Is this the correct video?<br><img src="' + 
+				data.thumbnail_url + '">')
+
+			$("#title").val(data.title)
+			$("#description").val(data.description)
+			$("#platform").val("Vimeo")
+			$("#url").val(vidID)
+			Materialize.updateTextFields()
+			$('#description').trigger('autoresize')
+			$("#addVideoForm").addClass("scale-in")
+		},
+		error: function(response, status, error) {
+			console.log("Error found!")
+			console.log(response)
+			console.log(status)
+			console.log(error)
+			$("#resultMessage").html("No video found. Please double check your link.")
+		},
+	})
+}

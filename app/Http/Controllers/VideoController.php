@@ -38,9 +38,9 @@ class VideoController extends Controller
 
     function displayAllVideos() {
 		$title = "Videos";
-		$all_videos = Video::inRandomOrder()->simplePaginate(12);
-		$tags = Tag::inRandomOrder()->get();
-	    return view("video_list", compact("title", "all_videos", "tags"));
+		$videos = Video::inRandomOrder()->simplePaginate(12);
+		$tags = Tag::inRandomOrder()->take(20)->get();
+	    return view("video_list", compact("title", "videos", "tags"));
 	}
 
 	function displayOneVideo($id) {

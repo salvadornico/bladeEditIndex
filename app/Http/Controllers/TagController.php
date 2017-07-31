@@ -9,11 +9,16 @@ use Session;
 
 class TagController extends Controller
 {
+    function displayAllTags() {
+        $title = "Search by Tag";
+        $tags = Tag::simplePaginate(100);
+        return view("tags_list", compact("title", "tags"));
+    }
+
     function displayTag($id) {
         $tag = Tag::find($id);
         $title = "Videos tagged: " . $tag->tag;
         $videos = $tag->videos;
-
         return view("single_tag", compact("tag", "title", "videos"));
     }
 

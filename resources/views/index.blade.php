@@ -43,10 +43,14 @@
 
 		<div class="row">
 
-			<h3>Search by Tag</h3>
+			<h3>Search by tag</h3>
 
 			@include("layouts.tags_list_partial")
 
+		</div>
+
+		<div class="row">
+			<a href="{{ url("/tags") }}" class="btn-flat amber-text text-accent-3">Browse all tags</a>
 		</div>
 		
 	</div> {{-- /container --}}

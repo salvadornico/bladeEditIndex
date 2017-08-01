@@ -3,6 +3,7 @@
 @section('main_content')
 
     <div class="container">
+
         <div class="row section">
             <div class="col m8 offset-m2">
 
@@ -51,7 +52,20 @@
                     </div>
                 </form>
 
+            </div>
         </div>
+
+        <div class="row section">
+            <div class="col m8 offset-m2">
+
+                Don't have an account yet?
+
+                <a class="btn-flat amber-text text-darken-1" href="{{ url("/register")}}">
+                    Register here
+                </a>
+            </div>
+        </div>
+
     </div>
 
 @endsection

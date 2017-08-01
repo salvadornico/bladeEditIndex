@@ -4,6 +4,7 @@
 	<head>
 
 		<title>{{ $title }} | What's That Edit?</title>
+		<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}" />
 
 		<!-- Google Fonts-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -140,7 +141,7 @@
 	                	<p class="grey-text text-lighten-4">
 	                		Helping you find that edit with that guy at that spot.
 	                		<br><br>
-	                		Any issues? Send us a message <a href="mailto:example@example.com">here</a>!
+	                		Any issues? Send us a message <a href="mailto:whatsthatedit@gmail.com">here</a>!
 	                		<br>
 	                		Made in the Philippines with love and Laravel.
 	                	</p>

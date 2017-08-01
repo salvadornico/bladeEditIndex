@@ -15,8 +15,8 @@ class VideoController extends Controller
     function displayHome() {
         $title = "Home";
         $video = Video::inRandomOrder()->first();
-        $recent_videos = Video::orderBy('id', 'desc')->take(4)->get();
-        $tags = Tag::inRandomOrder()->get();
+        $recent_videos = Video::orderBy('id', 'desc')->take(8)->get();
+        $tags = Tag::inRandomOrder()->take(20)->get();
         return view("index", compact("title", "video", "recent_videos", "tags"));
     }
 

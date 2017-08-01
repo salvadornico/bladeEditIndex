@@ -8,26 +8,26 @@ use Auth;
 
 class Video extends Model
 {
-    protected $fillable = ["title", "description"];
-    use Searchable;
+	protected $fillable = ["title", "description"];
+	use Searchable;
 
-    function owner() {
-    	return $this->belongsTo('App\User', 'uploaded_by');
-    }
+	function owner() {
+		return $this->belongsTo('App\User', 'uploaded_by');
+	}
 
-    function tags() {
-    	return $this->belongsToMany('App\Tag', 'videos_tags', 'video_id', 'tag_id');
-    }
+	function tags() {
+		return $this->belongsToMany('App\Tag', 'videos_tags', 'video_id', 'tag_id');
+	}
 
-    function flags() {
-    	return $this->hasMany('App\Flag', 'video_id');
-    }
-
-    function hasPendingFlags() {
-    	return $this->flags->where("status", "pending")->count();
-    }
-
-    function addTagToVideo(Tag $tag) {
+	function addTagToVideo(Tag $tag) {
 		$this->tags()->attach($tag->id, ['user_id' => Auth::user()->id]);
+	}
+
+	function flags() {
+		return $this->hasMany('App\Flag', 'video_id');
+	}
+
+	function hasPendingFlags() {
+		return $this->flags->where("status", "pending")->count();
 	}
 }

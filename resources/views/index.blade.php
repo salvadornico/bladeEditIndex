@@ -4,21 +4,28 @@
 
 	<div class="container">
 		
-		<div class="row section">
+		<div class="row section" id="topRow">
 			
-			<div class="col s12 m8">
+			<div class="col s12 m6 l7" id="intro">
 				<h1>Yo</h1>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					This site is for all of us who could never quite find that one edit.
+				</p>
+				<p>
+					Everything on here is entirely dependent on you, the blading community. So please add all your favorite edits and tag them as thoroughly as you can to help others find them in the future. The more you contribute, the more useful this site becomes for everyone!
+				</p>
+
+				<h5 class="center-align">Get started:</h5>
+				<a href="{{ url("/addVideo") }}" class="btn waves-effect waves-light amber darken-1">
+					Add a video
+				</a>
+
+				<p>
+					<span class="amber-text text-accent-3">WARNING:</span> This site is currently still under development. Please send your feedback to <a href="mailto:whatsthatedit@gmail.com">whatsthatedit@gmail.com</a> and we'll do our best to squash out bugs as we find them.
 				</p>
 			</div>
 
-			<div class="col m4 hide-on-small-only">
+			<div class="col m5 offset-m1 l4 offset-l1 hide-on-small-only" id="randomVid">
 
 				<h4>Random video</h4>
 				@include("layouts.player_partial")
@@ -42,6 +49,10 @@
 		</div>
 
 		<div class="row">
+			<a href="{{ url("/videos") }}" class="btn-flat waves-effect waves-light amber-text text-accent-3">Browse all videos</a>
+		</div>
+
+		<div class="row">
 
 			<h3>Search by tag</h3>
 
@@ -50,7 +61,7 @@
 		</div>
 
 		<div class="row">
-			<a href="{{ url("/tags") }}" class="btn-flat amber-text text-accent-3">Browse all tags</a>
+			<a href="{{ url("/tags") }}" class="btn-flat waves-effect waves-light amber-text text-accent-3">Browse all tags</a>
 		</div>
 		
 	</div> {{-- /container --}}

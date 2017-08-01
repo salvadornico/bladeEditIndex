@@ -16,7 +16,7 @@
 				key: varApiKey
 			},
 			function(data){
-				ytData{{ $video->id }}.innerHTML = '<img src="' + data.items[0].snippet.thumbnails.medium.url + '" class="responsive-img">'
+				ytData{{ $video->id }}.innerHTML = '<img src="' + data.items[0].snippet.thumbnails.medium.url + '" class="responsive-img hoverable">'
 			}
 		)
 		
@@ -38,7 +38,7 @@
 				url: url,
 			},
 			function(data){
-				vimeoData{{ $video->id }}.innerHTML = '<img src="' + data.thumbnail_url + '" class="responsive-img">'
+				vimeoData{{ $video->id }}.innerHTML = '<img src="' + data.thumbnail_url + '" class="responsive-img hoverable">'
 			}
 		)
 		

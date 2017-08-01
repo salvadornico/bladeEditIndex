@@ -1,7 +1,7 @@
 @foreach($videos as $video)
 	<div class="col s6 m4 l3">
 
-		<div class="card small white">
+		<div class="card small white hoverable">
 
 			<a href="{{ url("videos/$video->id") }}">
 				<div class="card-image waves-effect waves-block waves-light">

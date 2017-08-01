@@ -13,21 +13,18 @@ body
 main
 	flex: 1 0 auto
 	
-.center-X
-	position: absolute
-	left: 50%
-	transform: translateX(-50%)
-	
-.center-Y
-	position: absolute
-	top: 50%
-	transform: translateY(-50%)
-	
-.center-XY
-	position: absolute
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%)
+center(axis, position)
+	position: position
+	if axis == 'X'
+		left: 50%
+		transform: translateX(-50%)
+	else if axis == 'Y'
+		top: 50%
+		transform: translateY(-50%)
+	else if axis == 'XY'
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
 	
 .clearfix:after
 	content: ""

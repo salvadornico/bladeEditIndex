@@ -8,6 +8,19 @@
 
 		<div class="row section">
 
+			@if($tags->count())
+
+				<h5>Tags</h5>
+				@include("layouts.tags_list_partial")
+
+			@else
+				<h5>No tags found</h5>
+			@endif
+
+		</div>
+		
+		<div class="row section">
+
 			@if($videos->count())
 				<h5>Videos</h5>
 
@@ -33,19 +46,6 @@
 				@endforeach
 			@else
 				<h5>No videos found</h5>
-			@endif
-
-		</div>
-
-		<div class="row section">
-
-			@if($tags->count())
-
-				<h5>Tags</h5>
-				@include("layouts.tags_list_partial")
-
-			@else
-				<h5>No tags found</h5>
 			@endif
 
 		</div>

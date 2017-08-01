@@ -88,12 +88,12 @@
 							</form>
 						</li>
 
-						@if(Auth::user()->role == "admin")
+						{{-- @if(Auth::user()->role == "admin")
 							<li class="tab waves-effect waves-light"><a href="{{ url("/admin") }}" target="_self">
 								<span class="hide-on-small-only">Admin</span>
 								<i class="material-icons show-on-small">supervisor_account</i>
 							</a></li>
-						@endif
+						@endif --}}
 
 					@else
 
@@ -115,7 +115,7 @@
       			</ul>
 
       			@if(Auth::user())
-	      			<a href="{{ url("/addVideo") }}" class="btn-floating btn-large halfway-fab waves-effect waves-light amber accent-3 hide-on-med-and-down">
+	      			<a href="{{ url("/addVideo") }}" class="btn-floating btn-large halfway-fab waves-effect waves-light amber accent-3 hide-on-med-and-down tooltipped" data-position="left" data-delay="50" data-tooltip="Add a video">
 	        			<i class="material-icons">add</i>
 	      			</a>
 	      		@endif
@@ -175,9 +175,9 @@
 									</form>
 								</li>
 
-								@if(Auth::user()->role == "admin")
+								{{-- @if(Auth::user()->role == "admin")
 									<li><a href="{{ url("/admin") }}" target="_self" class="grey-text text-lighten-4">Admin</a></li>
-								@endif
+								@endif --}}
 
 							@else
 

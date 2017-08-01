@@ -1,5 +1,5 @@
 @foreach($tags as $tag)
-	<div class="chip">
+	<div class="chip hoverable">
 		<a href="{{ url("/tags/$tag->id") }}">{{ $tag->tag }}</a>
 
 		@if(Auth::user())

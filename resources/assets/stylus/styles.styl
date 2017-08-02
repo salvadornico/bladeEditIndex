@@ -1,6 +1,8 @@
 @import "base"
 
 accentYellow = #ffd740
+navGrey = #212121
+navTextGrey = rgba(255,255,255,0.7)
 textGrey = #424242
 warningRed = #bf360c
 
@@ -11,7 +13,15 @@ navPadding = 2%
 .nav-wrapper
 	padding-left: navPadding
 	padding-right: navPadding
-	
+
+.tabs.tabs-transparent
+	.indicator
+		background-color: navGrey
+	.tab a.active
+		color: navTextGrey
+		&:hover
+			color: white
+
 #intro
 	position: relative
 	a.btn

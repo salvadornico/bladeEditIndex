@@ -31,6 +31,15 @@ h5,
   padding-left: 2%;
   padding-right: 2%;
 }
+.tabs.tabs-transparent .indicator {
+  background-color: #212121;
+}
+.tabs.tabs-transparent .tab a.active {
+  color: rgba(255,255,255,0.7);
+}
+.tabs.tabs-transparent .tab a.active:hover {
+  color: #fff;
+}
 #intro {
   position: relative;
 }

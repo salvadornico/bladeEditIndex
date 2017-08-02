@@ -1,4 +1,4 @@
-@import "base"
+@require "base"
 
 accentYellow = #ffd740
 navGrey = #212121
@@ -24,20 +24,20 @@ navPadding = 2%
 			
 #topRow
 	@supports (display: grid)
-		@media widthTabletUp
+		@media TabletUp
 			display: grid
 			grid-template-columns: 60% 40%
 			grid-template-rows: auto auto
 			grid-column-gap: 30px		
-		@media widthTabletOnly
+		@media TabletOnly
 			grid-template-areas: "intro randomVid" "getStarted getStarted"
-		@media widthDesktopOnly
+		@media DesktopOnly
 			grid-template-areas: "intro randomVid" "getStarted randomVid"
 
 #getStarted
 	grid-area: getStarted
 	position: relative
-	@media widthTabletOnly
+	@media TabletOnly
 		justify-self: center
 		max-width: 60%
 	a.btn
@@ -45,7 +45,7 @@ navPadding = 2%
 
 #randomVid
 	grid-area: randomVid
-	@media widthTabletUp
+	@media TabletUp
 		padding-top: 35px
 
 .highlight

@@ -184,6 +184,7 @@
 							var token = $("#_token").val()
 							var tagInput = $("#tagInput").val()
 							var url = window.location.href+'/addTag'
+							$("#tagInput").val("")
 
 							$.ajax({
 								url: url,
@@ -194,7 +195,6 @@
 								},
 								success: function(data) {
 									$("#tagBox").html(data)
-									$("#tagInput").val("")
 								},
 								error: function(response, status, error) {
 				    				console.log("Error found!")

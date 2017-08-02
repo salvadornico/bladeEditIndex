@@ -19,7 +19,10 @@
 					This site is for all of us who could never quite find that one edit.
 				</p>
 				<p>
-					Everything on here is entirely dependent on you, the blading community. So please add all your favorite edits and tag them as thoroughly as you can to help others find them in the future. The more you contribute, the more useful this site becomes for everyone!
+					Everything on here is entirely dependent on you, the blading community. So please add all your favorite edits and tag them as thoroughly as you can to help others find them in the future. All tags are welcome: skaters involved, locations featured, tricks performed, brands represented, etc.
+				</p>
+				<p>
+					The more you contribute, the more useful this site becomes for everyone!
 				</p>
 			</div>
 

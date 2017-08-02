@@ -1,5 +1,5 @@
 @foreach($videos as $video)
-	<div class="col s6 m4 l3">
+	<div class="col s12 m4 l3">
 
 		<div class="card small white hoverable">
 

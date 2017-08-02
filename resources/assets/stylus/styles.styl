@@ -21,14 +21,32 @@ navPadding = 2%
 		color: navTextGrey
 		&:hover
 			color: white
+			
+#topRow
+	@supports (display: grid)
+		@media widthTabletUp
+			display: grid
+			grid-template-columns: 60% 40%
+			grid-template-rows: auto auto
+			grid-column-gap: 30px		
+		@media widthTabletOnly
+			grid-template-areas: "intro randomVid" "getStarted getStarted"
+		@media widthDesktopOnly
+			grid-template-areas: "intro randomVid" "getStarted randomVid"
 
-#intro
+#getStarted
+	grid-area: getStarted
 	position: relative
+	@media widthTabletOnly
+		justify-self: center
+		max-width: 60%
 	a.btn
 		center X relative
 
 #randomVid
-	padding-top: 60px
+	grid-area: randomVid
+	@media widthTabletUp
+		padding-top: 35px
 
 .highlight
 	font-weight: bold

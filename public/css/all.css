@@ -40,17 +40,52 @@ h5,
 .tabs.tabs-transparent .tab a.active:hover {
   color: #fff;
 }
-#intro {
+@supports ((display: -ms-grid) or (display: grid)) {
+@media (min-width: 600px) {
+    #topRow {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 60% 40%;
+          grid-template-columns: 60% 40%;
+      -ms-grid-rows: auto auto;
+          grid-template-rows: auto auto;
+      grid-column-gap: 30px;
+    }
+}
+@media (min-width: 600px) and (max-width: 992px) {
+    #topRow {
+      grid-template-areas: "intro randomVid" "getStarted getStarted";
+    }
+}
+@media (min-width: 992px) {
+    #topRow {
+      grid-template-areas: "intro randomVid" "getStarted randomVid";
+    }
+}
+}
+#getStarted {
+  grid-area: getStarted;
   position: relative;
 }
-#intro a.btn {
+@media (min-width: 600px) and (max-width: 992px) {
+  #getStarted {
+    justify-self: center;
+    max-width: 60%;
+  }
+}
+#getStarted a.btn {
   position: relative;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
 #randomVid {
-  padding-top: 60px;
+  grid-area: randomVid;
+}
+@media (min-width: 600px) {
+  #randomVid {
+    padding-top: 35px;
+  }
 }
 .highlight {
   font-weight: bold;

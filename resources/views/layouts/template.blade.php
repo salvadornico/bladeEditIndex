@@ -51,10 +51,6 @@
 			<div class="nav-content">
 				<ul class="tabs tabs-transparent">
 
-					<script type="text/javascript">
-						var activePage = "{{ $title }}"
-					</script>
-
         			<li class="tab waves-effect waves-light">
         				<a href="{{ url("/") }}" target="_self">
         					<span class="hide-on-small-only">Home</span>

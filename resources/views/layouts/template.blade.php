@@ -29,6 +29,8 @@
 
 	<body class="grey darken-3 white-text">
 
+		@include("layouts.analyticstracking")
+
 		<nav class="nav-extended grey darken-4">
 
 			<div class="nav-wrapper">
